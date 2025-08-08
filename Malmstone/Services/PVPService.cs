@@ -26,7 +26,7 @@ namespace Malmstone.Services
             unsafe
             {
                 var pvpProfile = PvPProfile.Instance();
-                if (pvpProfile != null && pvpProfile->IsLoaded != 0)
+                if (pvpProfile != null && pvpProfile->IsLoaded)
                 {
                     return new PvPSeriesInfo
                     {
@@ -44,7 +44,7 @@ namespace Malmstone.Services
             unsafe
             {
                 var pvpProfile = PvPProfile.Instance();
-                if (pvpProfile != null && pvpProfile->IsLoaded != 0)
+                if (pvpProfile != null && pvpProfile->IsLoaded)
                 {
                     CachedFrontlineResults = new PVPProfileFrontlineResults
                     {
@@ -132,7 +132,7 @@ namespace Malmstone.Services
             unsafe
             {
                 var pvpProfile = PvPProfile.Instance();
-                if (pvpProfile != null && pvpProfile->IsLoaded != 0)
+                if (pvpProfile != null && pvpProfile->IsLoaded)
                 {
                     return new PVPProfileFrontlineResults
                     {

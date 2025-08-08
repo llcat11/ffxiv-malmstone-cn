@@ -17,7 +17,7 @@ public class UIChanger
     {
         unsafe
         {
-            var PvpRewardWindow = (AtkUnitBase*)addonInfo.Addon;
+            var PvpRewardWindow = (AtkUnitBase*)addonInfo.Addon.Address;
             var SeriesLevelTextNode = PvpRewardWindow->GetTextNodeById(16);
             PvPSeriesInfo? PvPSeriesInfo = Plugin.PvPService.GetPvPSeriesInfo();
             if (SeriesLevelTextNode != null && PvPSeriesInfo != null)
@@ -33,7 +33,7 @@ public class UIChanger
     {
         unsafe
         {
-            var PvpProfileWindow = (AtkUnitBase*)addonInfo.Addon;
+            var PvpProfileWindow = (AtkUnitBase*)addonInfo.Addon.Address;
             var SeriesLevelTextNode = PvpProfileWindow->GetTextNodeById(24);
             PvPSeriesInfo? PvPSeriesInfo = Plugin.PvPService.GetPvPSeriesInfo();
             if (PvPSeriesInfo == null)

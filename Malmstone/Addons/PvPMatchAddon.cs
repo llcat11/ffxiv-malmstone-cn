@@ -127,7 +127,7 @@ namespace Malmstone.Addons
             {
                 unsafe
                 {
-                    var FrontlineResultUnit = (AtkUnitBase*)addonInfo.Addon;
+                    var FrontlineResultUnit = (AtkUnitBase*)addonInfo.Addon.Address;
                     if (FrontlineResultUnit == null) return;
                     var SeriesExpComponent = FrontlineResultUnit->GetComponentByNodeId(35);
                     var SeriesExpTextNode = (AtkTextNode*)SeriesExpComponent->GetTextNodeById(2);
