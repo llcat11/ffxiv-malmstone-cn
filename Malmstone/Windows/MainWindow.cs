@@ -26,7 +26,7 @@ namespace Malmstone.Windows
         {
             SizeConstraints = new WindowSizeConstraints
             {
-                MinimumSize = new Vector2(460, 550),
+                MinimumSize = new Vector2(460, 630),
                 MaximumSize = new Vector2(float.MaxValue, float.MaxValue)
             };
 
@@ -97,6 +97,18 @@ namespace Malmstone.Windows
                 ImGui.Spacing();
                 ImGui.BulletText($"Win: {xpResult.CrystallineConflictWin} " + (xpResult.CrystallineConflictWin == 1 ? "time" : "times"));
                 ImGui.BulletText($"Lose: {xpResult.CrystallineConflictLose} " + (xpResult.CrystallineConflictLose == 1 ? "time" : "times"));
+                ImGui.Bullet();
+                ImGui.SameLine();
+                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
+                                  $"Estimate: {xpResult.CrystallineConflictExpectedMatches} " +
+                                  (xpResult.CrystallineConflictExpectedMatches == 1 ? "match" : "matches"));
+
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.BeginTooltip();
+                    ImGui.Text("Calculated Expected Value based on a 50/50 win/loss ratio");
+                    ImGui.EndTooltip();
+                }
 
                 ImGui.Spacing();
                 ImGui.Separator();
@@ -115,6 +127,18 @@ namespace Malmstone.Windows
                 ImGui.BulletText($"Take 1st Place: {xpResult.FrontlineWin} " + (xpResult.FrontlineWin == 1 ? "time" : "times"));
                 ImGui.BulletText($"Take 2nd Place: {xpResult.FrontlineLose2nd} " + (xpResult.FrontlineLose2nd == 1 ? "time" : "times"));
                 ImGui.BulletText($"Take 3rd Place: {xpResult.FrontlineLose3rd} " + (xpResult.FrontlineLose3rd == 1 ? "time" : "times"));
+                ImGui.Bullet();
+                ImGui.SameLine();
+                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
+                                  $"Estimate: {xpResult.FrontlineExpectedMatches} " +
+                                  (xpResult.FrontlineExpectedMatches == 1 ? "match" : "matches"));
+
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.BeginTooltip();
+                    ImGui.Text("Calculated Expected Value based on a 1/3 chance for each placement");
+                    ImGui.EndTooltip();
+                }
 
                 // Frontlines Roulette Section
                 ImGui.TextColored(new Vector4(0.8f, 0.6f, 0.6f, 1f), "Frontlines (Roulette)");
@@ -128,6 +152,18 @@ namespace Malmstone.Windows
                 ImGui.BulletText($"Take 1st Place: {xpResult.FrontlineDailyWin} " + (xpResult.FrontlineDailyWin == 1 ? "time" : "times"));
                 ImGui.BulletText($"Take 2nd Place: {xpResult.FrontlineDailyLose2nd} " + (xpResult.FrontlineDailyLose2nd == 1 ? "time" : "times"));
                 ImGui.BulletText($"Take 3rd Place: {xpResult.FrontlineDailyLose3rd} " + (xpResult.FrontlineDailyLose3rd == 1 ? "time" : "times"));
+                ImGui.Bullet();
+                ImGui.SameLine();
+                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
+                                  $"Estimate: {xpResult.FrontlineDailyExpectedMatches} " +
+                                  (xpResult.FrontlineDailyExpectedMatches == 1 ? "match/day" : "matches/days"));
+
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.BeginTooltip();
+                    ImGui.Text("Calculated Expected Value based on a 1/3 chance for each placement.\nAlso the minimum number of days to reach your goal if you only play Frontlines once per day.");
+                    ImGui.EndTooltip();
+                }
 
 
                 if (Plugin.Configuration.TrackFrontlineBonus)
@@ -216,6 +252,18 @@ namespace Malmstone.Windows
                 ImGui.Spacing();
                 ImGui.BulletText($"Win: {xpResult.RivalWingsWin} " + (xpResult.RivalWingsWin == 1 ? "time" : "times"));
                 ImGui.BulletText($"Lose: {xpResult.RivalWingsLose} " + (xpResult.RivalWingsLose == 1 ? "time" : "times"));
+                ImGui.Bullet();
+                ImGui.SameLine();
+                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
+                                  $"Estimate: {xpResult.RivalWingsExpectedMatches} " +
+                                  (xpResult.RivalWingsExpectedMatches == 1 ? "match" : "matches"));
+
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.BeginTooltip();
+                    ImGui.Text("Calculated Expected Value based on a 50/50 win/loss ratio");
+                    ImGui.EndTooltip();
+                }
 
                 ImGui.Separator();
                 ImGui.Spacing();

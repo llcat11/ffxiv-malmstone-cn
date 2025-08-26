@@ -214,7 +214,8 @@ namespace Malmstone.Addons
                     seString.Append(new TextPayload("[Crystalline Conflict to Level " + TargetGoal + "]\n"));
                     seString.Append(new UIForegroundPayload(35));
                     seString.Append(new TextPayload($"Win: {ccResultData.CrystallineConflictWin} " + (ccResultData.CrystallineConflictWin == 1 ? "time" : "times") + "\n"));
-                    seString.Append(new TextPayload($"Lose: {ccResultData.CrystallineConflictLose} " + (ccResultData.CrystallineConflictLose == 1 ? "time" : "times")));
+                    seString.Append(new TextPayload($"Lose: {ccResultData.CrystallineConflictLose} " + (ccResultData.CrystallineConflictLose == 1 ? "time" : "times")  + "\n"));
+                    seString.Append(new TextPayload($"Estimated Matches: {ccResultData.CrystallineConflictExpectedMatches}\n"));
                     seString.Append(UIForegroundPayload.UIForegroundOff);
                     break;
                 case PvPContentType.Frontlines:
@@ -226,6 +227,7 @@ namespace Malmstone.Addons
                     seString.Append(new TextPayload($"Take 1st Place: {flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "time" : "times") +" (" + (flResultData.FrontlineDailyWin) + ")\n"));
                     seString.Append(new TextPayload($"Take 2nd Place: {flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose2nd) + ")\n"));
                     seString.Append(new TextPayload($"Take 3rd Place: {flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose3rd) + ")\n"));
+                    seString.Append(new TextPayload($"Estimated Matches: {flResultData.FrontlineExpectedMatches} (" + (flResultData.FrontlineDailyExpectedMatches) + ")\n"));
                     seString.Append(new TextPayload($"Frontline Roulette Shown in Parentheses"));
                     seString.Append(UIForegroundPayload.UIForegroundOff);
                     break;
@@ -236,7 +238,8 @@ namespace Malmstone.Addons
                     seString.Append(new TextPayload("[Rival Wings to Level " + TargetGoal + "]\n"));
                     seString.Append(new UIForegroundPayload(43));
                     seString.Append(new TextPayload($"Win: {rwResultData.RivalWingsWin} " + (rwResultData.RivalWingsWin == 1 ? "time" : "times") + "\n"));
-                    seString.Append(new TextPayload($"Lose: {rwResultData.RivalWingsLose} " + (rwResultData.RivalWingsLose == 1 ? "time" : "times")));
+                    seString.Append(new TextPayload($"Lose: {rwResultData.RivalWingsLose} " + (rwResultData.RivalWingsLose == 1 ? "time" : "times") + "\n"));
+                    seString.Append(new TextPayload($"Estimated Matches: {rwResultData.RivalWingsExpectedMatches}\n"));
                     seString.Append(UIForegroundPayload.UIForegroundOff);
                     break;
             }

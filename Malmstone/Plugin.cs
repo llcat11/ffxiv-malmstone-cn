@@ -190,6 +190,11 @@ private void OnCommand(string command, string args)
         {
             seString.Append(new TextPayload($"Lose: {xpResult.CrystallineConflictLose} " + (xpResult.CrystallineConflictLose == 1 ? "time" : "times") + "\n"));
         }
+        
+        if(xpResult.CrystallineConflictExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.CrystallineConflictExpectedMatches} " + (xpResult.CrystallineConflictExpectedMatches == 1 ? "match" : "matches") + "\n"));
+        }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);
     }
@@ -214,6 +219,11 @@ private void OnCommand(string command, string args)
         {
             seString.Append(new TextPayload($"Take 3rd Place: {xpResult.FrontlineLose3rd} " + (xpResult.FrontlineLose3rd == 1 ? "time" : "times") + "\n"));
         }
+        
+        if (xpResult.FrontlineExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.FrontlineExpectedMatches} " + (xpResult.FrontlineExpectedMatches == 1 ? "match" : "matches") + "\n"));
+        }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);
 
@@ -234,6 +244,11 @@ private void OnCommand(string command, string args)
         {
             seString.Append(new TextPayload($"Take 3rd Place: {xpResult.FrontlineDailyLose3rd} " + (xpResult.FrontlineDailyLose3rd == 1 ? "time" : "times") + "\n"));
         }
+        
+        if (xpResult.FrontlineDailyExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.FrontlineDailyExpectedMatches} " + (xpResult.FrontlineDailyExpectedMatches == 1 ? "match" : "matches") + "\n"));
+        }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);
     }
@@ -252,6 +267,11 @@ private void OnCommand(string command, string args)
         if (xpResult.RivalWingsLose > 0)
         {
             seString.Append(new TextPayload($"Lose: {xpResult.RivalWingsLose} " + (xpResult.RivalWingsLose == 1 ? "time" : "times") + "\n"));
+        }
+        
+        if (xpResult.RivalWingsExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.RivalWingsExpectedMatches} " + (xpResult.RivalWingsExpectedMatches == 1 ? "match" : "matches") + "\n"));
         }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);

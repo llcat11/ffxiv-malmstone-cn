@@ -27,14 +27,18 @@ namespace Malmstone.Utils
             public int TargetLevel;
             public int CrystallineConflictWin;
             public int CrystallineConflictLose;
+            public int CrystallineConflictExpectedMatches;
             public int FrontlineWin;
             public int FrontlineLose2nd;
             public int FrontlineLose3rd;
+            public int FrontlineExpectedMatches;
             public int FrontlineDailyWin;
             public int FrontlineDailyLose2nd;
             public int FrontlineDailyLose3rd;
+            public int FrontlineDailyExpectedMatches;
             public int RivalWingsWin;
             public int RivalWingsLose;
+            public int RivalWingsExpectedMatches;
         }
 
         public static XpCalculationResult CalculateXp(int currentLevel, int goalLevel, int currentProgress)
@@ -53,14 +57,18 @@ namespace Malmstone.Utils
                 TargetLevel = goalLevel,
                 CrystallineConflictWin = CalculateActivityCount(remainingXp, CrystallineWinExp),
                 CrystallineConflictLose = CalculateActivityCount(remainingXp, CrystallineLoseExp),
+                CrystallineConflictExpectedMatches = CalculateExpectedCrystallineMatches(remainingXp),
                 FrontlineWin = CalculateActivityCount(remainingXp, FrontlineWinExp),
                 FrontlineLose2nd = CalculateActivityCount(remainingXp, FrontlineLose2Exp),
                 FrontlineLose3rd = CalculateActivityCount(remainingXp, FrontlineLoseExp),
+                FrontlineExpectedMatches = CalculateExpectedFrontlineMatches(remainingXp, false),
                 FrontlineDailyWin = CalculateActivityCount(remainingXp, FrontlineDailyWinExp),
                 FrontlineDailyLose2nd = CalculateActivityCount(remainingXp, FrontlineDailyLose2Exp),
                 FrontlineDailyLose3rd = CalculateActivityCount(remainingXp, FrontlineDailyLoseExp),
+                FrontlineDailyExpectedMatches = CalculateExpectedFrontlineMatches(remainingXp, true),
                 RivalWingsWin = CalculateActivityCount(remainingXp, RivalWingsWinExp),
-                RivalWingsLose = CalculateActivityCount(remainingXp, RivalWingsLoseExp)
+                RivalWingsLose = CalculateActivityCount(remainingXp, RivalWingsLoseExp),
+                RivalWingsExpectedMatches = CalculateExpectedRivalWingsMatches(remainingXp)
             };
         }
 
@@ -73,7 +81,8 @@ namespace Malmstone.Utils
                 RemainingXp = remainingXp,
                 TargetLevel = goalLevel,
                 CrystallineConflictWin = CalculateActivityCount(remainingXp, CrystallineWinExp),
-                CrystallineConflictLose = CalculateActivityCount(remainingXp, CrystallineLoseExp)
+                CrystallineConflictLose = CalculateActivityCount(remainingXp, CrystallineLoseExp),
+                CrystallineConflictExpectedMatches = CalculateExpectedCrystallineMatches(remainingXp)
             };
         }
 
@@ -88,9 +97,11 @@ namespace Malmstone.Utils
                 FrontlineWin = CalculateActivityCount(remainingXp, FrontlineWinExp),
                 FrontlineLose2nd = CalculateActivityCount(remainingXp, FrontlineLose2Exp),
                 FrontlineLose3rd = CalculateActivityCount(remainingXp, FrontlineLoseExp),
+                FrontlineExpectedMatches = CalculateExpectedFrontlineMatches(remainingXp, false),
                 FrontlineDailyWin = CalculateActivityCount(remainingXp, FrontlineDailyWinExp),
                 FrontlineDailyLose2nd = CalculateActivityCount(remainingXp, FrontlineDailyLose2Exp),
-                FrontlineDailyLose3rd = CalculateActivityCount(remainingXp, FrontlineDailyLoseExp)
+                FrontlineDailyLose3rd = CalculateActivityCount(remainingXp, FrontlineDailyLoseExp),
+                FrontlineDailyExpectedMatches = CalculateExpectedFrontlineMatches(remainingXp, true)
             };
         }
 
@@ -103,7 +114,8 @@ namespace Malmstone.Utils
                 RemainingXp = remainingXp,
                 TargetLevel = goalLevel,
                 RivalWingsWin = CalculateActivityCount(remainingXp, RivalWingsWinExp),
-                RivalWingsLose = CalculateActivityCount(remainingXp, RivalWingsLoseExp)
+                RivalWingsLose = CalculateActivityCount(remainingXp, RivalWingsLoseExp),
+                RivalWingsExpectedMatches = CalculateExpectedRivalWingsMatches(remainingXp)
             };
         }
 
@@ -160,6 +172,29 @@ namespace Malmstone.Utils
         {
             // Should always be greater than 0
             return Math.Max(1, (int)Math.Ceiling((double)remainingXp / activityXp));
+        }
+        
+        private static int CalculateExpectedCrystallineMatches(int remainingXp)
+        {
+            // Expected Value assuming 50% win rate
+            return (int)Math.Ceiling(remainingXp / ((CrystallineWinExp + CrystallineLoseExp) / 2.0));
+        }
+        
+        private static int CalculateExpectedFrontlineMatches(int remainingXp, bool isDaily)
+        {
+            if (isDaily)
+            {
+                // Expected Value assuming 33% win rate, 33% 2nd place, 33% 3rd place
+                return (int)Math.Ceiling(remainingXp / ((FrontlineDailyWinExp + FrontlineDailyLose2Exp + FrontlineDailyLoseExp) / 3.0));
+            }
+            // Expected Value assuming 33% win rate, 33% 2nd place, 33% 3rd place
+            return (int)Math.Ceiling(remainingXp / ((FrontlineWinExp + FrontlineLose2Exp + FrontlineLoseExp) / 3.0));
+        }
+        
+        private static int CalculateExpectedRivalWingsMatches(int remainingXp)
+        {
+            // Expected Value assuming 50% win rate
+            return (int)Math.Ceiling(remainingXp / ((RivalWingsWinExp + RivalWingsLoseExp) / 2.0));
         }
 
     }
