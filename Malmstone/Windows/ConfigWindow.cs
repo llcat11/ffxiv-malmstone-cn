@@ -36,7 +36,7 @@ public class ConfigWindow : Window, IDisposable
         // PVP Match Tab
         if (ImGui.BeginTabItem("PVP Match"))
         {
-            ImGui.Text("Default Target Series Level");
+            ImGui.Text("Goal Series Level");
             var savedTargetSeriesRank = Configuration.DefaultTargetRankProperty;
             if (ImGui.InputInt("##SavedTargetSeriesRank", ref savedTargetSeriesRank, 1))
             {
@@ -65,13 +65,13 @@ public class ConfigWindow : Window, IDisposable
             {
                 ImGui.BeginTooltip();
                 ImGui.Text(
-                    "Automatically stops showing EXP progression notification after reaching the Default Target Series Level" +
+                    "Automatically stops showing EXP progression notification after Goal Series Level is reached" +
                     "\nOverrides other EXP notification settings");
                 ImGui.EndTooltip();
             }
 
             ImGui.SameLine();
-            ImGui.Text("Skip EXP progression notifications after default level is achieved");
+            ImGui.Text("Skip EXP progression notifications after Goal Series Level is achieved");
 
 
 
@@ -86,13 +86,13 @@ public class ConfigWindow : Window, IDisposable
             {
                 ImGui.BeginTooltip();
                 ImGui.Text(
-                    "Automatically stops showing matches remaining chat messages after reaching the the Default Target Series Level" +
+                    "Automatically stops showing matches remaining chat messages after reaching the Goal Series Level" +
                     "\nOverrides other post-match chat notification settings");
                 ImGui.EndTooltip();
             }
 
             ImGui.SameLine();
-            ImGui.Text("Skip remaining matches chat notifications after default level is achieved");
+            ImGui.Text("Skip remaining matches chat notifications after Goal Series Level is achieved");
 
 
             ImGui.Separator();
@@ -256,7 +256,7 @@ public class ConfigWindow : Window, IDisposable
             }
 
             ImGui.SameLine();
-            ImGui.Text("Show matches until Default Target Rank instead of next rank");
+            ImGui.Text("Show matches until Goal Series Level instead of next rank");
 
 
             ImGui.EndTabItem();
@@ -279,11 +279,18 @@ public class ConfigWindow : Window, IDisposable
                 ImGui.EndTooltip();
             }
             ImGui.SameLine();
-            ImGui.Text("Show calculations when viewing Series Malmstones");
+            ImGui.Text("Show main window when viewing PVP Series Rewards");
             
             ImGui.Separator();
 
-            ImGui.Text("Display Tracked Series Level Above 30 in...");
+            ImGui.Text("Display TRUE Series Level in...");
+            if (ImGui.IsItemHovered())
+            {
+                ImGui.BeginTooltip();
+                ImGui.Text(
+                    "FFXIV stops tracking Series Level after 30.\nMalmstone Calculator can track and display your actual series level far beyond the maximum");
+                ImGui.EndTooltip();
+            }
             var showTrueSeriesLevelPVPReward = Configuration.ShowTrueSeriesLevelPVPReward;
             if (ImGui.Checkbox("##ShowTrueSeriesLevelPVPReward", ref showTrueSeriesLevelPVPReward))
             {
