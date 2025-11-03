@@ -225,8 +225,8 @@ namespace Malmstone.Addons
                     seString.Append(new TextPayload("[Frontlines to Level " + TargetGoal+ "]\n"));
                     seString.Append(new UIForegroundPayload(518));
                     seString.Append(new TextPayload($"Take 1st Place: {flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "time" : "times") +" (" + (flResultData.FrontlineDailyWin) + ")\n"));
-                    seString.Append(new TextPayload($"Take 2nd Place: {flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose2nd) + ")\n"));
-                    seString.Append(new TextPayload($"Take 3rd Place: {flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose3rd) + ")\n"));
+                    seString.Append(new TextPayload($"Take 2nd Place: {flResultData.FrontlineLose2nd} " + (flResultData.FrontlineLose2nd == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose2nd) + ")\n"));
+                    seString.Append(new TextPayload($"Take 3rd Place: {flResultData.FrontlineLose3rd} " + (flResultData.FrontlineLose3rd == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose3rd) + ")\n"));
                     seString.Append(new TextPayload($"Estimated Matches: {flResultData.FrontlineExpectedMatches} (" + (flResultData.FrontlineDailyExpectedMatches) + ")\n"));
                     seString.Append(new TextPayload($"Frontline Roulette Shown in Parentheses"));
                     seString.Append(UIForegroundPayload.UIForegroundOff);
