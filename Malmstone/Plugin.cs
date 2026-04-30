@@ -26,6 +26,7 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static IToastGui ToastGui { get; private set; } = null!;
     [PluginService] internal static IPluginLog Logger { get; set; } = default!;
     [PluginService] internal static IClientState ClientState { get; private set; } = null!;
+    [PluginService] internal static IPlayerState PlayerState { get; private set; } = null!;
     [PluginService] internal static IFramework Framework { get; private set; } = null!;
 
     private const string CommandName = "/pmalm";
@@ -283,9 +284,9 @@ private void OnCommand(string command, string args)
 
     private void CheckPlayerLoaded(IFramework framework)
     {
-        if(ClientState.LocalPlayer != null)
+        if(PlayerState.IsLoaded)
         {
-            ulong contentId = ClientState.LocalContentId;
+            ulong contentId = PlayerState.ContentId;
             int CurrentSeriesLevel = PvPService.GetPvPSeriesInfo()?.CurrentSeriesRank ?? 0;
             if (Configuration.ExtraLevelsMap.TryGetValue(contentId, out var extraLevels))
             {
@@ -360,7 +361,7 @@ private void OnCommand(string command, string args)
     
     public int GetSavedExtraLevels()
     {
-        ulong contentId = ClientState.LocalContentId;
+        ulong contentId = PlayerState.ContentId;
         if (Configuration.ExtraLevelsMap.TryGetValue(contentId, out var extraLevels))
         {
             return extraLevels;
@@ -382,7 +383,7 @@ private void OnCommand(string command, string args)
 
     public bool IncrementExtraLevels(int amount)
     {
-        ulong contentId = ClientState.LocalContentId;
+        ulong contentId = PlayerState.ContentId;
         if (Configuration.ExtraLevelsMap.TryGetValue(contentId, out var extraLevels))
         {
             Configuration.ExtraLevelsMap[contentId] = extraLevels + amount;

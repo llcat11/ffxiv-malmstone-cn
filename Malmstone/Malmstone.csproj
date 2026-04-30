@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-  <Project Sdk="Dalamud.NET.Sdk/14.0.1">
+  <Project Sdk="Dalamud.NET.Sdk/15.0.0">
   <PropertyGroup>
-    <Version>1.0.8.2</Version>
+    <Version>1.0.8.3</Version>
     <Description>A PVP Series Malmstones Level Calculator</Description>
     <PackageProjectUrl>https://github.com/goatcorp/Malmstone</PackageProjectUrl>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
       <TargetFramework>net10.0-windows</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Update="DalamudPackager" Version="14.0.1" />
-    <PackageReference Update="DotNet.ReproducibleBuilds" Version="1.2.39" />
-  </ItemGroup>
 </Project>
