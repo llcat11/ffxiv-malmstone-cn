@@ -1,0 +1,13 @@
+{
+    "Author": "pinapelz",
+    "Name": "PVP通行证计算器",
+    "Punchline": "随时掌握距离下一个系列赛PVP通行证奖励还需要的 PVP 场数！",
+    "Description": "计算在达成目标系列赛等级前，各 PVP 模式所需的胜/负场数\n- 比赛结束后推送距离下一等级进度的通知\n- 追踪并显示 30 级以上的真实系列赛等级\n- 计算纷争前线的报酬补正\n\n使用 /pmalm 打开",
+    "ApplicableVersion": "any",
+    "Tags": [
+        "pvp",
+        "malmstone",
+        "series",
+        "calculator"
+    ]
+}
