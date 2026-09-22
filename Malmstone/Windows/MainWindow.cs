@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Numerics;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
@@ -22,11 +22,7 @@ namespace Malmstone.Windows
         public bool IgnoreSeriesLevelUpdates { get; set; } = false;
 
         public MainWindow(Plugin plugin)
-<<<<<<< HEAD
             : base("PVP通行证计算器")
-=======
-            : base("Malmstone")
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         {
             SizeConstraints = new WindowSizeConstraints
             {
@@ -48,19 +44,11 @@ namespace Malmstone.Windows
             if (pvpInfo != null)
             {
                 var CurrentSeriesLevel = pvpInfo.CurrentSeriesRank + Plugin.GetSavedExtraLevels();
-<<<<<<< HEAD
                 ImGui.Text($"当前系列赛等级：{CurrentSeriesLevel}");
                 ImGui.Text($"当前等级经验进度：{pvpInfo.SeriesExperience}");
                 ImGui.Spacing();
 
                 ImGui.Text("目标系列赛等级：");
-=======
-                ImGui.Text($"Current Series Level: {CurrentSeriesLevel}");
-                ImGui.Text($"Current Level Experience Progress: {pvpInfo.SeriesExperience} EXP");
-                ImGui.Spacing();
-
-                ImGui.Text("Target Series Level:");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                 ImGui.InputInt("##TargetSeriesRank", ref TargetSeriesRank, 1);
 
                 // Bounds checking to ensure no overflows
@@ -86,7 +74,6 @@ namespace Malmstone.Windows
                 var xpResult = _cachedXpResult;
 
                 ImGui.Spacing();
-<<<<<<< HEAD
                 ImGui.Text($"距离等级 {xpResult.TargetLevel} 还差 {xpResult.RemainingXp} 系列赛经验");
 
                 // If player has 100 unclaimed series levels (+30 for all main malmstones)
@@ -94,21 +81,11 @@ namespace Malmstone.Windows
                     ImGui.TextColored(new Vector4(1.0f, 0.0f, 0.0f, 1.0f),"你真的超爱 PVP……恭喜你已经把系列赛PVP通行证刷满了" +
                                                                           "\n无限等级上限为 100 个未领取奖励" +
                                                                           "\n在领取这些奖励之前你不会获得额外的系列赛经验！");
-=======
-                ImGui.Text($"You have {xpResult.RemainingXp} remaining series EXP to go until you reach level {xpResult.TargetLevel}");
-                
-                // If player has 100 unclaimed series levels (+30 for all main malmstones)
-                if(pvpInfo.CurrentSeriesRank > 130)
-                    ImGui.TextColored(new Vector4(1.0f, 0.0f, 0.0f, 1.0f),"You must really love PVP... Congrats on maxing out Series Malmstone" +
-                                                                          "\nThe Infinite Level is known to max out at 100 unclaimed rewards" +
-                                                                          "\nYou will not gain additional Series EXP until you claim them!");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
 
                 ImGui.Spacing();
                 ImGui.Separator();
 
                 // Crystalline Conflict Section
-<<<<<<< HEAD
                 ImGui.TextColored(new Vector4(0.6f, 0.8f, 1f, 1f), "水晶冲突");
                 if (ImGui.IsItemHovered())
                 {
@@ -125,33 +102,11 @@ namespace Malmstone.Windows
                 ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
                                   $"预计：{xpResult.CrystallineConflictExpectedMatches} " +
                                   (xpResult.CrystallineConflictExpectedMatches == 1 ? "场" : "场"));
-=======
-                ImGui.TextColored(new Vector4(0.6f, 0.8f, 1f, 1f), "Crystalline Conflict");
-                if (ImGui.IsItemHovered())
-                {
-                    ImGui.BeginTooltip();
-                    ImGui.Text("Win: 900 Series EXP" +
-                        "\nLose: 700 Series EXP");
-                    ImGui.EndTooltip();
-                }
-                ImGui.Spacing();
-                ImGui.BulletText($"Win: {xpResult.CrystallineConflictWin} " + (xpResult.CrystallineConflictWin == 1 ? "time" : "times"));
-                ImGui.BulletText($"Lose: {xpResult.CrystallineConflictLose} " + (xpResult.CrystallineConflictLose == 1 ? "time" : "times"));
-                ImGui.Bullet();
-                ImGui.SameLine();
-                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
-                                  $"Estimate: {xpResult.CrystallineConflictExpectedMatches} " +
-                                  (xpResult.CrystallineConflictExpectedMatches == 1 ? "match" : "matches"));
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
 
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-<<<<<<< HEAD
                     ImGui.Text("按 50% 胜 / 50% 负的期望值计算");
-=======
-                    ImGui.Text("Calculated Expected Value based on a 50/50 win/loss ratio");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     ImGui.EndTooltip();
                 }
 
@@ -159,7 +114,6 @@ namespace Malmstone.Windows
                 ImGui.Separator();
 
                 // Frontlines Section
-<<<<<<< HEAD
                 ImGui.TextColored(new Vector4(0.8f, 0.6f, 0.6f, 1f), "纷争前线");
                 if (ImGui.IsItemHovered())
                 {
@@ -178,40 +132,15 @@ namespace Malmstone.Windows
                 ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
                                   $"预计：{xpResult.FrontlineExpectedMatches} " +
                                   (xpResult.FrontlineExpectedMatches == 1 ? "场" : "场"));
-=======
-                ImGui.TextColored(new Vector4(0.8f, 0.6f, 0.6f, 1f), "Frontlines");
-                if (ImGui.IsItemHovered())
-                {
-                    ImGui.BeginTooltip();
-                    ImGui.Text("1st: 1500 Series EXP" +
-                        "\n2nd: 1250 Series EXP" +
-                        "\n3rd: 1000 Series EXP");
-                    ImGui.EndTooltip();
-                }
-                ImGui.Spacing();
-                ImGui.BulletText($"Take 1st Place: {xpResult.FrontlineWin} " + (xpResult.FrontlineWin == 1 ? "time" : "times"));
-                ImGui.BulletText($"Take 2nd Place: {xpResult.FrontlineLose2nd} " + (xpResult.FrontlineLose2nd == 1 ? "time" : "times"));
-                ImGui.BulletText($"Take 3rd Place: {xpResult.FrontlineLose3rd} " + (xpResult.FrontlineLose3rd == 1 ? "time" : "times"));
-                ImGui.Bullet();
-                ImGui.SameLine();
-                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
-                                  $"Estimate: {xpResult.FrontlineExpectedMatches} " +
-                                  (xpResult.FrontlineExpectedMatches == 1 ? "match" : "matches"));
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
 
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-<<<<<<< HEAD
                     ImGui.Text("按三种名次各 1/3 概率的期望值计算");
-=======
-                    ImGui.Text("Calculated Expected Value based on a 1/3 chance for each placement");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     ImGui.EndTooltip();
                 }
 
                 // Frontlines Roulette Section
-<<<<<<< HEAD
                 ImGui.TextColored(new Vector4(0.8f, 0.6f, 0.6f, 1f), "纷争前线（每日挑战）");
                 if (ImGui.IsItemHovered())
                 {
@@ -228,33 +157,11 @@ namespace Malmstone.Windows
                 ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
                                   $"预计：{xpResult.FrontlineDailyExpectedMatches} " +
                                   (xpResult.FrontlineDailyExpectedMatches == 1 ? "场/天" : "场/天"));
-=======
-                ImGui.TextColored(new Vector4(0.8f, 0.6f, 0.6f, 1f), "Frontlines (Roulette)");
-                if (ImGui.IsItemHovered())
-                {
-                    ImGui.BeginTooltip();
-                    ImGui.Text("An additional 1500 Series EXP on top of Frontline rewards (once per day)");
-                    ImGui.EndTooltip();
-                }
-                ImGui.Spacing();
-                ImGui.BulletText($"Take 1st Place: {xpResult.FrontlineDailyWin} " + (xpResult.FrontlineDailyWin == 1 ? "time" : "times"));
-                ImGui.BulletText($"Take 2nd Place: {xpResult.FrontlineDailyLose2nd} " + (xpResult.FrontlineDailyLose2nd == 1 ? "time" : "times"));
-                ImGui.BulletText($"Take 3rd Place: {xpResult.FrontlineDailyLose3rd} " + (xpResult.FrontlineDailyLose3rd == 1 ? "time" : "times"));
-                ImGui.Bullet();
-                ImGui.SameLine();
-                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
-                                  $"Estimate: {xpResult.FrontlineDailyExpectedMatches} " +
-                                  (xpResult.FrontlineDailyExpectedMatches == 1 ? "match/day" : "matches/days"));
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
 
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-<<<<<<< HEAD
                     ImGui.Text("按三种名次各 1/3 概率的期望值计算。\n也表示你每天只打一次纷争前线、达到目标所需的最少天数。");
-=======
-                    ImGui.Text("Calculated Expected Value based on a 1/3 chance for each placement.\nAlso the minimum number of days to reach your goal if you only play Frontlines once per day.");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     ImGui.EndTooltip();
                 }
 
@@ -263,7 +170,6 @@ namespace Malmstone.Windows
                 {
                     if (Plugin.PvPService.CurrentFrontlineLosingBonus == -1)
                     {
-<<<<<<< HEAD
                         ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "完成一场纷争前线以查看当前的报酬补正");
                         if (ImGui.IsItemHovered())
                         {
@@ -271,15 +177,6 @@ namespace Malmstone.Windows
                             ImGui.Text("用于计算你在纷争前线中连续获得第 3 名后获得的报酬补正" +
                                 "\n打一局纷争前线以确认你现有的报酬补正" +
                                 "\n可以在设置中关闭补正追踪");
-=======
-                        ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "Complete a Frontline match to view current reward bonus");
-                        if (ImGui.IsItemHovered())
-                        {
-                            ImGui.BeginTooltip();
-                            ImGui.Text("This calculates the losing streak bonus you receive after consecutive losses in Frontlines" +
-                                "\nPlay a match of Frontline to confirm your existing losing bonus" +
-                                "\nYou can turn off tracking entirely in the settings");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                             ImGui.EndTooltip();
                         }
                     }
@@ -289,33 +186,20 @@ namespace Malmstone.Windows
                         {
                             if(Plugin.PvPService.ConsecutiveThirdPlaceFrontline == 1)
                             {
-<<<<<<< HEAD
                                 ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "补正预备中：若本局获得第 3 名，将获得 10% 报酬补正");
-=======
-                                ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "Primed For Bonus: You'll receive a 10% reward bonus if you place 3rd");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                             }
                             if (ImGui.IsItemHovered())
                             {
                                 ImGui.BeginTooltip();
-<<<<<<< HEAD
                                 ImGui.Text("你的报酬补正已经预备好了！再次获得第 3 名即可获得 10% 报酬补正" +
                                     "\n若获得第 1 名则重置计数");
                                 ImGui.EndTooltip();
                             }
                             ImGui.Text("当前没有激活任何纷争前线报酬补正");
-=======
-                                ImGui.Text("You're primed for a reward bonus! You will get a 10% reward bonus if you place 3rd again" +
-                                    "\nCounter resets if you rank 1st");
-                                ImGui.EndTooltip();
-                            }
-                            ImGui.Text("No Frontline Reward Bonus Currently Active");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                         }
                         else
                         {
                             if (Plugin.PvPService.CurrentFrontlineLosingBonus != 50)
-<<<<<<< HEAD
                                 ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "在获得第 1 名或第 2 名后，你将获得 " + Plugin.PvPService.CurrentFrontlineLosingBonus + "% 报酬补正");
                             else
                                 ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "在获得第 1、2、3 名后，你将获得 " + Plugin.PvPService.CurrentFrontlineLosingBonus + "% 报酬补正");
@@ -324,35 +208,16 @@ namespace Malmstone.Windows
                                 ImGui.BeginTooltip();
                                 ImGui.Text("你将对系列赛经验、对战经验和狼印战绩按一定百分比获得补正，" +
                                     "直到获得一次第 1 名为止" );
-=======
-                                ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "You'll receive a " + Plugin.PvPService.CurrentFrontlineLosingBonus + "% reward bonus after placing 1st or 2nd");
-                            else
-                                ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "You'll receive a " + Plugin.PvPService.CurrentFrontlineLosingBonus + "% reward bonus after placing 1st, 2nd, or 3rd");
-                            if (ImGui.IsItemHovered())
-                            {
-                                ImGui.BeginTooltip();
-                                ImGui.Text("You'll earn a percentage bonus on PvP EXP, Series EXP, and Wolf Marks " +
-                                    "until attaining First Place" );
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                                 ImGui.EndTooltip();
                             }
                             if (Plugin.PvPService.CurrentFrontlineLosingBonus != 50)
                             {
-<<<<<<< HEAD
                                 ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "若本局获得第 3 名，报酬补正将提升至 " + (Plugin.PvPService.CurrentFrontlineLosingBonus + 10) + "%");
                                 if (ImGui.IsItemHovered())
                                 {
                                     ImGui.BeginTooltip();
                                     ImGui.Text($"再次获得第 3 名将使补正提升至 {Plugin.PvPService.CurrentFrontlineLosingBonus + 10}%" +
                                                    "\n这一更高的补正也会应用于发生这一事件的当局");
-=======
-                                ImGui.TextColored(new Vector4(0.0f, 1.0f, 0.0f, 1.0f), "Your reward bonus will increase to " + (Plugin.PvPService.CurrentFrontlineLosingBonus + 10) + "% if you place 3rd");
-                                if (ImGui.IsItemHovered())
-                                {
-                                    ImGui.BeginTooltip();
-                                    ImGui.Text($"Finishing 3rd again will increase your bonus to {Plugin.PvPService.CurrentFrontlineLosingBonus + 10}%" +
-                                                   "\nThis increased bonus will also apply to the match where this happens");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                                     ImGui.EndTooltip();
                                 }
                             }
@@ -360,21 +225,12 @@ namespace Malmstone.Windows
                         if (Plugin.Configuration.OutdatedFrontlineRewardBonus)
                         {
                             ImGui.SameLine();
-<<<<<<< HEAD
                             ImGui.TextColored(new Vector4(1.0f, 0.0f, 0.0f, 1.0f),"（数据已过期）");
                             if (ImGui.IsItemHovered())
                             {
                                 ImGui.BeginTooltip();
                                 ImGui.Text("该信息可能已过期，原因是纷争前线追踪已经卸载！" +
                                     "\n将在你下一场纷争前线后重新刷新数据");
-=======
-                            ImGui.TextColored(new Vector4(1.0f, 0.0f, 0.0f, 1.0f),"(Outdated)");
-                            if (ImGui.IsItemHovered())
-                            {
-                                ImGui.BeginTooltip();
-                                ImGui.Text("This information may be outdated due to Frontline tracking unloading!" +
-                                    "\nCalculations will refresh after your next match of Frontline");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                                 ImGui.EndTooltip();
                             }
                         }
@@ -385,7 +241,6 @@ namespace Malmstone.Windows
                 ImGui.Separator();
 
                 // Rival Wings Section
-<<<<<<< HEAD
                 ImGui.TextColored(new Vector4(0.6f, 0.8f, 0.6f, 1f), "烈羽争锋");
                 if (ImGui.IsItemHovered())
                 {
@@ -402,62 +257,28 @@ namespace Malmstone.Windows
                 ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
                                   $"预计：{xpResult.RivalWingsExpectedMatches} " +
                                   (xpResult.RivalWingsExpectedMatches == 1 ? "场" : "场"));
-=======
-                ImGui.TextColored(new Vector4(0.6f, 0.8f, 0.6f, 1f), "Rival Wings");
-                if (ImGui.IsItemHovered())
-                {
-                    ImGui.BeginTooltip();
-                    ImGui.Text("Win: 1250 Series EXP" +
-                        "\nLose: 750 Series EXP");
-                    ImGui.EndTooltip();
-                }
-                ImGui.Spacing();
-                ImGui.BulletText($"Win: {xpResult.RivalWingsWin} " + (xpResult.RivalWingsWin == 1 ? "time" : "times"));
-                ImGui.BulletText($"Lose: {xpResult.RivalWingsLose} " + (xpResult.RivalWingsLose == 1 ? "time" : "times"));
-                ImGui.Bullet();
-                ImGui.SameLine();
-                ImGui.TextColored(new Vector4(1.0f, 0.84f, 0.0f, 1.0f),
-                                  $"Estimate: {xpResult.RivalWingsExpectedMatches} " +
-                                  (xpResult.RivalWingsExpectedMatches == 1 ? "match" : "matches"));
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
 
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-<<<<<<< HEAD
                     ImGui.Text("按 50% 胜 / 50% 负的期望值计算");
-=======
-                    ImGui.Text("Calculated Expected Value based on a 50/50 win/loss ratio");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     ImGui.EndTooltip();
                 }
 
                 ImGui.Separator();
                 ImGui.Spacing();
-<<<<<<< HEAD
                 if (ImGui.Button("设置"))
-=======
-                if (ImGui.Button("Settings"))
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     Plugin.ToggleConfigUI();
                 ImGui.SameLine();
                 if (pvpInfo.CurrentSeriesRank != pvpInfo.ClaimedSeriesRank)
                 {
-<<<<<<< HEAD
                     ImGui.Text("别忘了去领取你的系列赛PVP通行证奖励！");
-=======
-                    ImGui.Text("Don't forget to claim your Series Malmstone rewards!");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                 }
 
             }
             else
             {
-<<<<<<< HEAD
                 ImGui.Text("对战资料尚未加载。");
-=======
-                ImGui.Text("PvP Profile is not loaded.");
->>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
             }
         }
         public void OnOpenPVPRewardWindow()
