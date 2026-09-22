@@ -79,7 +79,11 @@ public sealed class Plugin : IDalamudPlugin
 
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
+<<<<<<< HEAD
             HelpMessage = "/pmalm <等级> <all/cc/fl/rw> -- 显示距离目标系列赛等级还需要的场数。cc = 水晶冲突，fl = 纷争前线，rw = 烈羽争锋"
+=======
+            HelpMessage = "/pmalm <rank> <all/cc/fl/rw> -- Displays PVP games left until a target rank. cc = Crystalline Conflict, fl = Frontlines, rw = Rivalwings"
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         });
 
         PluginInterface.UiBuilder.Draw += DrawUI;
@@ -147,19 +151,31 @@ private void OnCommand(string command, string args)
 
     if (targetRank < 1)
     {
+<<<<<<< HEAD
         Chat.PrintError("目标系列赛等级不能小于 1");
+=======
+        Chat.PrintError("Can't have a target rank less than 1");
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         return;
     }
 
     if (targetRank > 107397)
     {
+<<<<<<< HEAD
         Chat.PrintError("目标系列赛等级不能大于 107397（你真的觉得自己能达到吗？）");
+=======
+        Chat.PrintError("Can't have a target rank greater than 107397 (are you really gonna be able to reach that anyways?)");
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         return;
     }
 
     if (targetRank < CurrentSeriesLevel)
     {
+<<<<<<< HEAD
         Chat.PrintError("你已经超过系列赛等级 " + targetRank + " 了");
+=======
+        Chat.PrintError("You've already surpassed Rank " + targetRank);
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         return;
     }
 
@@ -174,27 +190,48 @@ private void OnCommand(string command, string args)
         includeAll = true;
     }
     var seString = new SeString(new List<Payload>());
+<<<<<<< HEAD
     seString.Append(new TextPayload("\n[距离系列赛等级 " + targetRank + "]"));
+=======
+    seString.Append(new TextPayload("\n[To Series Level " + targetRank + "]"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
 
     // Crystalline Conflict
     if (includeAll || specs.Contains("cc"))
     {
+<<<<<<< HEAD
         seString.Append(new TextPayload("\n水晶冲突：\n"));
+=======
+        seString.Append(new TextPayload("\nCrystalline Conflict:\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         seString.Append(new UIForegroundPayload(35));
 
         if (xpResult.CrystallineConflictWin > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"胜利：{xpResult.CrystallineConflictWin} " + (xpResult.CrystallineConflictWin == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Win: {xpResult.CrystallineConflictWin} " + (xpResult.CrystallineConflictWin == 1 ? "time" : "times") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         if (xpResult.CrystallineConflictLose > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"失败：{xpResult.CrystallineConflictLose} " + (xpResult.CrystallineConflictLose == 1 ? "场" : "场") + "\n"));
         }
 
         if(xpResult.CrystallineConflictExpectedMatches > 0)
         {
             seString.Append(new TextPayload($"预计：{xpResult.CrystallineConflictExpectedMatches} " + (xpResult.CrystallineConflictExpectedMatches == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Lose: {xpResult.CrystallineConflictLose} " + (xpResult.CrystallineConflictLose == 1 ? "time" : "times") + "\n"));
+        }
+        
+        if(xpResult.CrystallineConflictExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.CrystallineConflictExpectedMatches} " + (xpResult.CrystallineConflictExpectedMatches == 1 ? "match" : "matches") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);
@@ -203,52 +240,94 @@ private void OnCommand(string command, string args)
     //Frontlines
     if (includeAll || specs.Contains("fl"))
     {
+<<<<<<< HEAD
         seString.Append(new TextPayload("\n纷争前线：\n"));
+=======
+        seString.Append(new TextPayload("\nFrontlines:\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         seString.Append(new UIForegroundPayload(518));
 
         if (xpResult.FrontlineWin > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"第 1 名：{xpResult.FrontlineWin} " + (xpResult.FrontlineWin == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Take 1st Place: {xpResult.FrontlineWin} " + (xpResult.FrontlineWin == 1 ? "time" : "times") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         if (xpResult.FrontlineLose2nd > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"第 2 名：{xpResult.FrontlineLose2nd} " + (xpResult.FrontlineLose2nd == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Take 2nd Place: {xpResult.FrontlineLose2nd} " + (xpResult.FrontlineLose2nd == 1 ? "time" : "times") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         if (xpResult.FrontlineLose3rd > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"第 3 名：{xpResult.FrontlineLose3rd} " + (xpResult.FrontlineLose3rd == 1 ? "场" : "场") + "\n"));
         }
 
         if (xpResult.FrontlineExpectedMatches > 0)
         {
             seString.Append(new TextPayload($"预计：{xpResult.FrontlineExpectedMatches} " + (xpResult.FrontlineExpectedMatches == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Take 3rd Place: {xpResult.FrontlineLose3rd} " + (xpResult.FrontlineLose3rd == 1 ? "time" : "times") + "\n"));
+        }
+        
+        if (xpResult.FrontlineExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.FrontlineExpectedMatches} " + (xpResult.FrontlineExpectedMatches == 1 ? "match" : "matches") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);
 
+<<<<<<< HEAD
         seString.Append(new TextPayload("\n纷争前线（每日挑战）：\n"));
+=======
+        seString.Append(new TextPayload("\nFrontlines (Roulette):\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         seString.Append(new UIForegroundPayload(518));
 
         if (xpResult.FrontlineDailyWin > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"第 1 名：{xpResult.FrontlineDailyWin} " + (xpResult.FrontlineDailyWin == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Take 1st Place: {xpResult.FrontlineDailyWin} " + (xpResult.FrontlineDailyWin == 1 ? "time" : "times") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         if (xpResult.FrontlineDailyLose2nd > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"第 2 名：{xpResult.FrontlineDailyLose2nd} " + (xpResult.FrontlineDailyLose2nd == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Take 2nd Place: {xpResult.FrontlineDailyLose2nd} " + (xpResult.FrontlineDailyLose2nd == 1 ? "time" : "times") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         if (xpResult.FrontlineDailyLose3rd > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"第 3 名：{xpResult.FrontlineDailyLose3rd} " + (xpResult.FrontlineDailyLose3rd == 1 ? "场" : "场") + "\n"));
         }
 
         if (xpResult.FrontlineDailyExpectedMatches > 0)
         {
             seString.Append(new TextPayload($"预计：{xpResult.FrontlineDailyExpectedMatches} " + (xpResult.FrontlineDailyExpectedMatches == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Take 3rd Place: {xpResult.FrontlineDailyLose3rd} " + (xpResult.FrontlineDailyLose3rd == 1 ? "time" : "times") + "\n"));
+        }
+        
+        if (xpResult.FrontlineDailyExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.FrontlineDailyExpectedMatches} " + (xpResult.FrontlineDailyExpectedMatches == 1 ? "match" : "matches") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);
@@ -257,11 +336,16 @@ private void OnCommand(string command, string args)
     // Rival Wings
     if (includeAll || specs.Contains("rw"))
     {
+<<<<<<< HEAD
         seString.Append(new TextPayload("\n烈羽争锋：\n"));
+=======
+        seString.Append(new TextPayload("\nRival Wings:\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         seString.Append(new UIForegroundPayload(43));
 
         if (xpResult.RivalWingsWin > 0)
         {
+<<<<<<< HEAD
             seString.Append(new TextPayload($"胜利：{xpResult.RivalWingsWin} " + (xpResult.RivalWingsWin == 1 ? "场" : "场") + "\n"));
         }
 
@@ -273,6 +357,19 @@ private void OnCommand(string command, string args)
         if (xpResult.RivalWingsExpectedMatches > 0)
         {
             seString.Append(new TextPayload($"预计：{xpResult.RivalWingsExpectedMatches} " + (xpResult.RivalWingsExpectedMatches == 1 ? "场" : "场") + "\n"));
+=======
+            seString.Append(new TextPayload($"Win: {xpResult.RivalWingsWin} " + (xpResult.RivalWingsWin == 1 ? "time" : "times") + "\n"));
+        }
+        
+        if (xpResult.RivalWingsLose > 0)
+        {
+            seString.Append(new TextPayload($"Lose: {xpResult.RivalWingsLose} " + (xpResult.RivalWingsLose == 1 ? "time" : "times") + "\n"));
+        }
+        
+        if (xpResult.RivalWingsExpectedMatches > 0)
+        {
+            seString.Append(new TextPayload($"Estimate: {xpResult.RivalWingsExpectedMatches} " + (xpResult.RivalWingsExpectedMatches == 1 ? "match" : "matches") + "\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
         }
 
         seString.Append(UIForegroundPayload.UIForegroundOff);

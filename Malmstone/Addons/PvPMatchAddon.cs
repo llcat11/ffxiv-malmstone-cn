@@ -144,13 +144,21 @@ namespace Malmstone.Addons
                     }
                     else
                     {
+<<<<<<< HEAD
                         Plugin.Chat.PrintError("[PVP通行证计算器] 无法获取获得的系列赛经验：" + SeriesExpText);
+=======
+                        Plugin.Chat.PrintError("[Malmstone Calculator] Unable to get earned Series EXP: " + SeriesExpText);
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     }
                 }
             }
             else
             {
+<<<<<<< HEAD
                 Plugin.Chat.PrintError("[PVP通行证计算器] 无法获取当前纷争前线的结果");
+=======
+                Plugin.Chat.PrintError("[Malmstone Calculator] Unable to get current Frontline match results");
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
             }
             if(Plugin.PvPService.ConsecutiveThirdPlaceFrontline >= 1 && Plugin.Configuration.SavedFrontlineRewardBonus == 0)
             {
@@ -178,6 +186,7 @@ namespace Malmstone.Addons
             switch (Plugin.Configuration.PostmatchProgressionToastType)
             {
                 case 0:
+<<<<<<< HEAD
                     Plugin.ToastGui.ShowNormal("系列赛等级 " + CurrentSeriesLevel +
                         "     " + seriesInfo.SeriesExperience + "/" + MalmstoneXPCalculator.GetXPTargetForCurrentLevel(seriesInfo.CurrentSeriesRank));
                     break;
@@ -192,6 +201,22 @@ namespace Malmstone.Addons
                 default:
                     Plugin.ToastGui.ShowNormal("系列赛等级 " + CurrentSeriesLevel +
                         "     " + seriesInfo.SeriesExperience + "/" + MalmstoneXPCalculator.GetXPTargetForCurrentLevel(seriesInfo.CurrentSeriesRank));
+=======
+                    Plugin.ToastGui.ShowNormal("Series Level " + CurrentSeriesLevel +
+                        "     " + seriesInfo.SeriesExperience + "/" + MalmstoneXPCalculator.GetXPTargetForCurrentLevel(seriesInfo.CurrentSeriesRank) + " EXP");
+                    break;
+                case 1:
+                    Plugin.ToastGui.ShowQuest("Series Level " + CurrentSeriesLevel +
+                        "     " + seriesInfo.SeriesExperience + "/" + MalmstoneXPCalculator.GetXPTargetForCurrentLevel(seriesInfo.CurrentSeriesRank) + " EXP");
+                    break;
+                case 2:
+                    Plugin.ToastGui.ShowError("Series Level " + CurrentSeriesLevel +
+                        "     " + seriesInfo.SeriesExperience + "/" + MalmstoneXPCalculator.GetXPTargetForCurrentLevel(seriesInfo.CurrentSeriesRank) + " EXP");
+                    break;
+                default:
+                    Plugin.ToastGui.ShowNormal("Series Level " + CurrentSeriesLevel +
+                        "     " + seriesInfo.SeriesExperience + "/" + MalmstoneXPCalculator.GetXPTargetForCurrentLevel(seriesInfo.CurrentSeriesRank) + " EXP");
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     break;
             }
 
@@ -211,17 +236,26 @@ namespace Malmstone.Addons
                     MalmstoneXPCalculator.XpCalculationResult ccResultData = MalmstoneXPCalculator.CalculateCrystallineConflictMatches(
                         CurrentSeriesLevel, TargetGoal, seriesInfo.SeriesExperience);
                     if (ccResultData.CrystallineConflictLose == 0) break;
+<<<<<<< HEAD
                     seString.Append(new TextPayload("[水晶冲突至等级 " + TargetGoal + "]\n"));
                     seString.Append(new UIForegroundPayload(35));
                     seString.Append(new TextPayload($"胜利：{ccResultData.CrystallineConflictWin} " + (ccResultData.CrystallineConflictWin == 1 ? "场" : "场") + "\n"));
                     seString.Append(new TextPayload($"失败：{ccResultData.CrystallineConflictLose} " + (ccResultData.CrystallineConflictLose == 1 ? "场" : "场")  + "\n"));
                     seString.Append(new TextPayload($"预计场数：{ccResultData.CrystallineConflictExpectedMatches}\n"));
+=======
+                    seString.Append(new TextPayload("[Crystalline Conflict to Level " + TargetGoal + "]\n"));
+                    seString.Append(new UIForegroundPayload(35));
+                    seString.Append(new TextPayload($"Win: {ccResultData.CrystallineConflictWin} " + (ccResultData.CrystallineConflictWin == 1 ? "time" : "times") + "\n"));
+                    seString.Append(new TextPayload($"Lose: {ccResultData.CrystallineConflictLose} " + (ccResultData.CrystallineConflictLose == 1 ? "time" : "times")  + "\n"));
+                    seString.Append(new TextPayload($"Estimated Matches: {ccResultData.CrystallineConflictExpectedMatches}\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     seString.Append(UIForegroundPayload.UIForegroundOff);
                     break;
                 case PvPContentType.Frontlines:
                     MalmstoneXPCalculator.XpCalculationResult flResultData = MalmstoneXPCalculator.CalculateFrontlineMatches(
                         CurrentSeriesLevel, TargetGoal, seriesInfo.SeriesExperience);
                     if (flResultData.FrontlineDailyLose3rd == 0) break;
+<<<<<<< HEAD
                     seString.Append(new TextPayload("[纷争前线至等级 " + TargetGoal+ "]\n"));
                     seString.Append(new UIForegroundPayload(518));
                     seString.Append(new TextPayload($"第 1 名：{flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "场" : "场") +" （" + (flResultData.FrontlineDailyWin) + "）\n"));
@@ -229,17 +263,34 @@ namespace Malmstone.Addons
                     seString.Append(new TextPayload($"第 3 名：{flResultData.FrontlineLose3rd} " + (flResultData.FrontlineLose3rd == 1 ? "场" : "场") + " （" + (flResultData.FrontlineDailyLose3rd) + "）\n"));
                     seString.Append(new TextPayload($"预计场数：{flResultData.FrontlineExpectedMatches} （" + (flResultData.FrontlineDailyExpectedMatches) + "）\n"));
                     seString.Append(new TextPayload($"括号内为纷争前线（每日挑战）的场数"));
+=======
+                    seString.Append(new TextPayload("[Frontlines to Level " + TargetGoal+ "]\n"));
+                    seString.Append(new UIForegroundPayload(518));
+                    seString.Append(new TextPayload($"Take 1st Place: {flResultData.FrontlineWin} " + (flResultData.FrontlineWin == 1 ? "time" : "times") +" (" + (flResultData.FrontlineDailyWin) + ")\n"));
+                    seString.Append(new TextPayload($"Take 2nd Place: {flResultData.FrontlineLose2nd} " + (flResultData.FrontlineLose2nd == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose2nd) + ")\n"));
+                    seString.Append(new TextPayload($"Take 3rd Place: {flResultData.FrontlineLose3rd} " + (flResultData.FrontlineLose3rd == 1 ? "time" : "times") + " (" + (flResultData.FrontlineDailyLose3rd) + ")\n"));
+                    seString.Append(new TextPayload($"Estimated Matches: {flResultData.FrontlineExpectedMatches} (" + (flResultData.FrontlineDailyExpectedMatches) + ")\n"));
+                    seString.Append(new TextPayload($"Frontline Roulette Shown in Parentheses"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     seString.Append(UIForegroundPayload.UIForegroundOff);
                     break;
                 case PvPContentType.RivalWings:
                     MalmstoneXPCalculator.XpCalculationResult rwResultData = MalmstoneXPCalculator.CalculateRivalWingsMatches(
                         CurrentSeriesLevel, TargetGoal, seriesInfo.SeriesExperience);
                     if (rwResultData.RivalWingsLose == 0) break;
+<<<<<<< HEAD
                     seString.Append(new TextPayload("[烈羽争锋至等级 " + TargetGoal + "]\n"));
                     seString.Append(new UIForegroundPayload(43));
                     seString.Append(new TextPayload($"胜利：{rwResultData.RivalWingsWin} " + (rwResultData.RivalWingsWin == 1 ? "场" : "场") + "\n"));
                     seString.Append(new TextPayload($"失败：{rwResultData.RivalWingsLose} " + (rwResultData.RivalWingsLose == 1 ? "场" : "场") + "\n"));
                     seString.Append(new TextPayload($"预计场数：{rwResultData.RivalWingsExpectedMatches}\n"));
+=======
+                    seString.Append(new TextPayload("[Rival Wings to Level " + TargetGoal + "]\n"));
+                    seString.Append(new UIForegroundPayload(43));
+                    seString.Append(new TextPayload($"Win: {rwResultData.RivalWingsWin} " + (rwResultData.RivalWingsWin == 1 ? "time" : "times") + "\n"));
+                    seString.Append(new TextPayload($"Lose: {rwResultData.RivalWingsLose} " + (rwResultData.RivalWingsLose == 1 ? "time" : "times") + "\n"));
+                    seString.Append(new TextPayload($"Estimated Matches: {rwResultData.RivalWingsExpectedMatches}\n"));
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
                     seString.Append(UIForegroundPayload.UIForegroundOff);
                     break;
             }

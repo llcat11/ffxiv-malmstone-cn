@@ -1,8 +1,14 @@
 {
     "Author": "pinapelz",
+<<<<<<< HEAD
     "Name": "PVP通行证计算器",
     "Punchline": "随时掌握距离下一个系列赛PVP通行证奖励还需要的 PVP 场数！",
     "Description": "计算在达成目标系列赛等级前，各 PVP 模式所需的胜/负场数\n- 比赛结束后推送距离下一等级进度的通知\n- 追踪并显示 30 级以上的真实系列赛等级\n- 计算纷争前线的报酬补正\n\n使用 /pmalm 打开",
+=======
+    "Name": "Malmstone Calculator",
+    "Punchline": "Keep tabs on how much more PVP you have to play before unlocking your next Series Malmstone reward!",
+    "Description": "Calculates the number of wins/losses needed in different modes of PVP before achieving your target Series Level\n- Receive post-match notifications about progress towards next Series Level\n- Track and display Series Level above 30\n- Calculate Frontline losing streak bonus rewards\n\nUse /pmalm to get started",
+>>>>>>> dbffb5c6f99683e459e9a36432a6221c5c4f71f1
     "ApplicableVersion": "any",
     "Tags": [
         "pvp",
